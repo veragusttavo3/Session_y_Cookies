@@ -3,9 +3,9 @@ const express = require("express")
 const router = express.Router()
 
 const formularioController = require("../controllers/other")
-const { check } = require("express-validator")
+const formularioCheck= require("../middleware/formulario.middleware")
 
 router.get("/formulario", formularioController.formulario)
-router.post("/formulario",[check("")],formularioController.proceso)
+router.post("/formulario",formularioController.proceso)
 
 module.exports=router;
