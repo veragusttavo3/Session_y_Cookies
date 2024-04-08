@@ -10,28 +10,32 @@
 </head>
 
 <body>
+    
     <div class="box-1">
         <div class="box-2">
             <form class="box-3" action="" method="POST">
                 <h2 class="box-4">Formulario</h2>
 
                 <div class="box-5">
-                    <input type="text" id="nombre" name="nombre" value="">
-                    <label for="">Ingrese su nombre </label>
+                    <input type="text" id="nombre" name="nombre" value="<%=locals.old?.nombre %>">
+                    <label for="nombre">Ingrese su nombre </label>
                 </div>
+                <div class="err"><%= locals.errors?.nombre?.msg%></div>
                 <div class="box-5">
-                    <input type="email" id="email" name="email" value="">
+                    <input type="email" id="email" name="email" value="<%=locals.old?.email %>">
                     <label for="email">Ingrese su email </label>
                 </div>
+                <div class="err"><%= locals.errors?.email?.msg%></div>
                 <div class="box-5">
-                    <input type="number" id="age" name="age" min="0" value="">
+                    <input type="number" id="age" name="age" min="0" value="<%=locals.old?.age %>">
                     <label for="age">Ingrese su Edad</label>
                 </div>
+                <div class="err"><%= locals.errors?.age?.msg%></div>
                 <div class="seleccionar">
                     <label for="color">Seleccionar Color </label>
-                    <select name="color" id="color"> required>
+                    <select name="color" id="color"> >
                         <option value="verde">Verde</option>
-                        <option value="celeste">Celeste</option>
+                        <option value="celeste" selected>Celeste</option>
                         <option value="negro">Negro</option>
                         <option value="azul">Azul</option>
                     </select>
@@ -41,8 +45,8 @@
             </form>
         </div>
     </div>
+    <% if (locals?.el) { %>
     <div class="box-7">
-        <% if (locals?.el) { %>
             <p>Hola <strong>
                     <%= locals.el.nombre %>
                 </strong>, elegiste el color: <strong>
@@ -52,9 +56,9 @@
                     <%= el.email %>
                 </strong>, y tu edad es: <strong>
                     <%= el.age %>
-                </strong>,</p>
+                </strong></p>
+            </div>
             <% } %>
-    </div>
 </body>
 
 </html>
